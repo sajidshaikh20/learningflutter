@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learningflutter/widgets/card_item.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -8,44 +9,46 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int counter = 0;
+  List<String> messageData = <String>[];
+
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("To DO"),
-          centerTitle: true,
+          title: const Text("To DO"),
+          centerTitle: true, //to make title in center
         ),
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment
+              .end, // aligne item in end ( right side of screen for columns)
           children: [
-            TextField(),
+            TextField(
+              controller: textEditingController,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ElevatedButton(
-                onPressed: () {},
-                child: Text('Save'),
+                onPressed: () {
+                  setState(() {
+                    if (textEditingController.text.isNotEmpty) {
+                      messageData.add(
+                          textEditingController.text); //added value in list
+
+                      textEditingController.clear(); // clear value of textfield
+                    }
+                  });
+                },
+                child: const Text('Save'),
               ),
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  Card(
-                    elevation: 2.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text('This is my first todo'),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('submit'),
+              child: ListView.builder(
+                itemCount: messageData.length,
+                itemBuilder: (BuildContext context, int index) => CardItem(
+                  message: messageData[messageData.length - 1 - index],
+                ),
               ),
             ),
           ],
