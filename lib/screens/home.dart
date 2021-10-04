@@ -6,7 +6,9 @@ import 'package:learningflutter/widgets/card_item.dart';
 List<String> messageData = <String>[];
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  Home({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();

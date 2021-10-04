@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class TodoItem extends StatelessWidget {
-  const TodoItem({Key? key}) : super(key: key);
+class TodoItem extends StatefulWidget {
+  TodoItem({Key? key}) : super(key: key);
 
   @override
+  _TodoItemState createState() => _TodoItemState();
+}
+
+class _TodoItemState extends State<TodoItem> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("this is items"),
-    );
+    return Text("this is text");
+    //  ListView.builder(
+    // itemCount: item.length, itemBuilder: (context, index) {});
   }
 }
