@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<String> messageData = <String>[];
 
-  TextEditingController textEditingController = TextEditingController();
+  // TextEditingController textEditingController = TextEditingController();
   int bottomIndex = 0;
   @override
   Widget build(BuildContext context) {
