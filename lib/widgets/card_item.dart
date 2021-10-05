@@ -11,6 +11,7 @@ class CardItem extends StatelessWidget {
       color: Colors.white54,
       elevation: 2.0,
       shadowColor: Colors.purple,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
