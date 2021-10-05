@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learningflutter/screens/todo_add.dart';
 import 'package:learningflutter/screens/todo_item.dart';
 
-List<String> messageData = <String>['first item', 'second item', 'third items'];
+List<String> todo = [];
 
 class Home extends StatefulWidget {
   Home({
@@ -28,7 +28,12 @@ class _HomeState extends State<Home> {
 
       //todo_add & todo_item
 
-      body: (bottomIndex == 0) ? TodoItem() : TodoAdd(),
+      body: (bottomIndex == 0)
+          ? TodoItem()
+          : TodoAdd(
+              updateState: () => setState(() {
+                    bottomIndex = 0;
+                  })),
 
       bottomNavigationBar: BottomNavigationBar(
           // backgroundColor: Colors.blueGrey,

@@ -12,22 +12,22 @@ class TodoItem extends StatefulWidget {
 class _TodoItemState extends State<TodoItem> {
   @override
   Widget build(BuildContext context) {
- 
+    print('item build called');
+
     return Scaffold(
       body: Column(
         children: [
           Expanded(
               child: ListView.builder(
-            itemCount: messageData.length,
+            itemCount: todo.length,
             itemBuilder: (context, index) {
               return CardItem(
-                message: messageData[index],
+                message: todo[todo.length - 1 - index],
               );
             },
           ))
         ],
       ),
     );
- 
   }
 }
