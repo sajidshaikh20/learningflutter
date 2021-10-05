@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learningflutter/screens/todo_add.dart';
 import 'package:learningflutter/screens/todo_item.dart';
-import 'package:learningflutter/widgets/card_item.dart';
 
-List<String> messageData = <String>[];
+List<String> messageData = <String>['first item', 'second item', 'third items'];
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -13,9 +12,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> messageData = <String>[];
+  // List<String> messageData = <String>[];
 
-  TextEditingController textEditingController = TextEditingController();
+  // TextEditingController textEditingController = TextEditingController();
   int bottomIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,18 +29,26 @@ class _HomeState extends State<Home> {
       body: (bottomIndex == 0) ? TodoItem() : TodoAdd(),
 
       bottomNavigationBar: BottomNavigationBar(
+          // backgroundColor: Colors.blueGrey,
           currentIndex: bottomIndex,
           onTap: (index) {
-            print('this is $index');
+            // print('this is $index');
             setState(() {
               bottomIndex = index;
             });
           },
           items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.list), label: 'my todo'),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.add), label: 'add todo'),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.brown,
+              icon: Icon(Icons.list),
+              label: 'My Todo',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add Todo'),
+            //  BottomNavigationBarItem(
+            //   icon: Icon(Icons.settings),
+            //   label: 'Settings',
+            //   backgroundColor: Colors.pink,
+            // ),
           ]),
     );
   }
