@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learningflutter/screens/home.dart';
+import 'package:learningflutter/widgets/card_item.dart';
 
 class TodoItem extends StatefulWidget {
   TodoItem({Key? key}) : super(key: key);
@@ -10,8 +12,22 @@ class TodoItem extends StatefulWidget {
 class _TodoItemState extends State<TodoItem> {
   @override
   Widget build(BuildContext context) {
-    return Text("this is text");
-    //  ListView.builder(
-    // itemCount: item.length, itemBuilder: (context, index) {});
+ 
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+              child: ListView.builder(
+            itemCount: messageData.length,
+            itemBuilder: (context, index) {
+              return CardItem(
+                message: messageData[index],
+              );
+            },
+          ))
+        ],
+      ),
+    );
+ 
   }
 }
