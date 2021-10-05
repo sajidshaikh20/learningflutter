@@ -5,7 +5,9 @@ import 'package:learningflutter/screens/todo_item.dart';
 List<String> messageData = <String>['first item', 'second item', 'third items'];
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  Home({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
