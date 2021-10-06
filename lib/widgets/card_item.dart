@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:learningflutter/model/todo.dart';
 import 'package:learningflutter/screens/home.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({Key? key, required this.message}) : super(key: key);
-  final String message;
+  const CardItem({Key? key, required this.obj}) : super(key: key);
+  final ToDo obj;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +22,15 @@ class CardItem extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-              child: Text('5 Oct 2021'),
+              child: Text(obj.date),
             ),
+            Text(obj.title),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Text(
-                  message,
+                  obj.message,
                   style: TextStyle(fontSize: 17.0),
                 ),
               ),

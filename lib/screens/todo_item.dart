@@ -22,7 +22,10 @@ class _TodoItemState extends State<TodoItem> {
             itemCount: todo.length,
             itemBuilder: (context, index) {
               return CardItem(
-                message: todo[todo.length - 1 - index],
+                obj: todo[todo.length - 1 - index],
+                // message: todo[todo.length - 1 - index].message,
+                // date: todo[todo.length - 1 - index].date,
+                // title: todo[todo.length - 1 - index].title,
               );
             },
           ))

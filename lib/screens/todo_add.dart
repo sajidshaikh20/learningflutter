@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learningflutter/model/todo.dart';
 import 'package:learningflutter/screens/home.dart';
 import 'package:learningflutter/screens/todo_item.dart';
 
@@ -10,7 +11,8 @@ class TodoAdd extends StatefulWidget {
 }
 
 class _TodoAddState extends State<TodoAdd> {
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
 
   bool validated = true;
   String error = "";
@@ -25,7 +27,25 @@ class _TodoAddState extends State<TodoAdd> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
           child: TextField(
-            controller: textEditingController,
+            controller: titleController,
+            cursorHeight: 30,
+            maxLines: 2,
+            minLines: 1,
+            maxLength: 300,
+            style: TextStyle(fontSize: 20),
+            decoration: InputDecoration(
+                errorText: validated ? null : error,
+                labelText: "To Do",
+                labelStyle: TextStyle(fontSize: 17),
+                hintText: "enter text ",
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10))),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+          child: TextField(
+            controller: messageController,
             cursorHeight: 30,
             maxLines: 6,
             minLines: 1,
@@ -46,17 +66,28 @@ class _TodoAddState extends State<TodoAdd> {
               ElevatedButton.styleFrom(minimumSize: Size(double.infinity, 45)),
           onPressed: () {
             setState(() {
-              if (textEditingController.text.isEmpty) {
+              if (messageController.text.isEmpty) {
                 validated = false;
                 error = "Can't be empty";
-              } else if (textEditingController.text.length > 300) {
+              } else if (messageController.text.length > 300) {
                 validated = false;
                 error = "Too many haracters";
               } else {
-                todo.add(textEditingController.text);
-                textEditingController.clear();
-                validated = true;
+                //add data in the list of type ToDo
+                var messageValue = messageController.text;
+                var titleValue = titleController.text; // ""
 
+                DateTime dt = DateTime.now();
+
+                String dateValue = '${dt.day}/${dt.month}/${dt.year}';
+
+                ToDo value = ToDo(
+                    date: dateValue, message: messageValue, title: titleValue);
+
+                todo.add(value);
+
+                messageController.clear();
+                validated = true;
                 widget.updateState();
               }
             });

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:learningflutter/model/todo.dart';
 import 'package:learningflutter/screens/todo_add.dart';
 import 'package:learningflutter/screens/todo_item.dart';
 
-List<String> todo = [];
+List<ToDo> todo = <ToDo>[];
 
 class Home extends StatefulWidget {
   Home({
